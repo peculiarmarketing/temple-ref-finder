@@ -136,13 +136,13 @@ def validate(folder: Path, staging: Path, sel: dict) -> tuple[Path, list, list]:
                 "(e.g. no official render released yet)"
             )
     else:
-        if total > 5:
+        if total > 10:
             problems.append(
-                f"total refs would be {total}; trim the selection to keep the 3-5 target"
+                f"total refs would be {total}; trim the selection to keep the 5-10 target"
             )
-        if total < 3 and not sel["shortfall_note"]:
+        if total < 5 and not sel["shortfall_note"]:
             problems.append(
-                f"total refs would be {total} (under 3) and there is no shortfall_note"
+                f"total refs would be {total} (under 5) and there is no shortfall_note"
             )
 
     # Zero overwrites of anything already in the temple folder. existing_ref_names
