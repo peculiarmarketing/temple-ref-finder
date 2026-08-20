@@ -1,0 +1,94 @@
+{
+  "Billings": {
+    "official_name": "Billings Montana Temple",
+    "slug": "billings-montana-temple"
+  },
+  "Cedar City": {
+    "official_name": "Cedar City Utah Temple",
+    "slug": "cedar-city-utah-temple"
+  },
+  "Deseret Peak": {
+    "official_name": "Deseret Peak Utah Temple",
+    "slug": "deseret-peak-utah-temple"
+  },
+  "Draper": {
+    "official_name": "Draper Utah Temple",
+    "slug": "draper-utah-temple"
+  },
+  "Heber Valley": {
+    "official_name": "Heber Valley Utah Temple",
+    "slug": "heber-valley-utah-temple"
+  },
+  "Jordan River": {
+    "official_name": "Jordan River Utah Temple",
+    "slug": "jordan-river-utah-temple"
+  },
+  "Layton": {
+    "official_name": "Layton Utah Temple",
+    "slug": "layton-utah-temple"
+  },
+  "Lehi": {
+    "official_name": "Lehi Utah Temple",
+    "slug": "lehi-utah-temple"
+  },
+  "Lindon": {
+    "official_name": "Lindon Utah Temple",
+    "slug": "lindon-utah-temple"
+  },
+  "Monticello": {
+    "official_name": "Monticello Utah Temple",
+    "slug": "monticello-utah-temple"
+  },
+  "Mount Timpanogos": {
+    "official_name": "Mount Timpanogos Utah Temple",
+    "slug": "mount-timpanogos-utah-temple"
+  },
+  "Ogden": {
+    "official_name": "Ogden Utah Temple",
+    "slug": "ogden-utah-temple"
+  },
+  "Oquirrh Mountain": {
+    "official_name": "Oquirrh Mountain Utah Temple",
+    "slug": "oquirrh-mountain-utah-temple"
+  },
+  "Orem": {
+    "official_name": "Orem Utah Temple",
+    "slug": "orem-utah-temple"
+  },
+  "Payson": {
+    "official_name": "Payson Utah Temple",
+    "slug": "payson-utah-temple"
+  },
+  "Price": {
+    "official_name": "Price Utah Temple",
+    "slug": "price-utah-temple"
+  },
+  "Provo Rock Canyon": {
+    "official_name": "Provo Utah Rock Canyon Temple",
+    "slug": "provo-utah-rock-canyon-temple"
+  },
+  "Red Cliffs": {
+    "official_name": "Red Cliffs Utah Temple",
+    "slug": "red-cliffs-utah-temple"
+  },
+  "Spanish Fork": {
+    "official_name": "Spanish Fork Utah Temple",
+    "slug": "spanish-fork-utah-temple"
+  },
+  "St. Paul": {
+    "official_name": "St. Paul Minnesota Temple",
+    "slug": "st.-paul-minnesota-temple"
+  },
+  "Syracuse": {
+    "official_name": "Syracuse Utah Temple",
+    "slug": "syracuse-utah-temple"
+  },
+  "Vernal": {
+    "official_name": "Vernal Utah Temple",
+    "slug": "vernal-utah-temple"
+  },
+  "West Jordan": {
+    "official_name": "West Jordan Utah Temple",
+    "slug": "west-jordan-utah-temple"
+  }
+}
