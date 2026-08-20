@@ -43,7 +43,7 @@ def scan() -> tuple[list[dict], int]:
             action = "starred-complete" if count > 0 else "render-recheck"
         elif starred:
             action = "starred-complete" if count > 0 else "render-only"
-        elif count >= 3:
+        elif count >= 5:
             action = "already-complete"
         else:
             action = "top-up"

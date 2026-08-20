@@ -6,9 +6,9 @@ Settled decisions. Read before changing behavior; these outrank the README when 
 
 - **Source order.** churchofjesuschristtemples.org first, general web search only as fallback when the gallery cannot fill the target.
 - **Architecture.** Claude session + scripts. Claude does searching and visual judgment in-session; scripts do deterministic filesystem and network work. Manual trigger ("run the refs sweep"), no scheduler, no new API keys.
-- **Target.** Top up every normal folder to 3-5 reference images total (existing images count).
+- **Target.** Top up every normal folder to 5-10 reference images total (existing images count). Raised from 3-5 by Evan on 20 Aug 2026, mid first full sweep. Scale within the range by clarity: 5 is enough only when the passes are clean, unobstructed views; when the best available images are marginal (edits, partial screening, soft light), keep hunting toward 10 so the drawing has enough good material.
 - **Starred folders.** A trailing `*` on a TO DO folder name means under construction or announced-only, where a single official render is all that exists. No top-up. Empty starred folders get the best 1-2 renders from the site's Official section. Starred folders that already hold their render get a resolution check and a note, then move to READY (Evan confirmed 20 Aug).
-- **Shortfall.** Under 3 passing images still moves to READY, with a note in the report explaining why.
+- **Shortfall.** Under 5 passing images still moves to READY, with a note in the report explaining why (threshold was 3 until the target rose on 20 Aug 2026).
 - **Obstruction tiers.** Minor occluders (lamppost, sliver of tree) pass clean with no edit prompt; the line-art prompt handles them. Moderate occlusion or poor background contrast passes with a Nano Banana Pro prompt, minimal edits only. Heavy occlusion (backfill would be guesswork) fails by default; the detail-ref rescue (secondary images showing the hidden parts) is only for when the gallery has nothing better.
 - **Placeholders.** Folders named "untitled folder copy N" are always skipped.
 - **Old tooling.** The Utah Temple Reference Picker HTML and the hf_ downloader are one-off experiments; ignored, built fresh.
