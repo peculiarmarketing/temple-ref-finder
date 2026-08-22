@@ -7,7 +7,8 @@ Read `docs/decisions.md` before changing behavior. Driven by the `temple-ref-fin
 ## Setup
 
 ```
-~/.pyenv/versions/3.12.8/bin/python -m venv .venv.nosync
+uv python install 3.12.8
+uv venv --python 3.12.8 --seed .venv.nosync
 ./.venv.nosync/bin/pip install -r requirements.txt
 ```
 
