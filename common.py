@@ -81,27 +81,50 @@ def list_ref_images(refs_dir: Path | None) -> tuple[list[Path], list[str]]:
     return images, icloud
 
 
+def _edits_entries(refs_dir: Path | None) -> tuple[list[Path], list[str], list[Path]]:
+    """Contents of refs/edits/: (image files, iCloud-evicted names, legacy subfolders).
+    Image files flat in edits/ are the current layout; per-image subfolders are the
+    pre-2026-08-25 layout and still count as one ref each."""
+    if refs_dir is None:
+        return [], [], []
+    edits = refs_dir / "edits"
+    if not edits.is_dir():
+        return [], [], []
+    files, icloud, legacy_dirs = [], [], []
+    for p in sorted(edits.iterdir()):
+        if p.name.startswith("."):
+            if p.suffix == ".icloud":
+                real = p.name[1:].removesuffix(".icloud")
+                if Path(real).suffix.lower() in IMAGE_EXTS:
+                    icloud.append(real)
+            continue
+        if p.is_dir():
+            legacy_dirs.append(p)
+        elif p.is_file() and p.suffix.lower() in IMAGE_EXTS:
+            files.append(p)
+    return files, icloud, legacy_dirs
+
+
 def existing_ref_names(refs_dir: Path | None) -> set[str]:
-    """Every ref name already present: real files, iCloud-evicted files, and edit stems."""
+    """Every ref name already present: real files, iCloud-evicted files, and edits
+    (flat files and legacy per-image folders alike, by name and stem)."""
     images, icloud = list_ref_images(refs_dir)
     names = {p.name for p in images} | set(icloud)
-    if refs_dir is not None:
-        edits = refs_dir / "edits"
-        if edits.is_dir():
-            names |= {d.name for d in edits.iterdir() if d.is_dir()}
+    edit_files, edit_icloud, legacy_dirs = _edits_entries(refs_dir)
+    for p in edit_files:
+        names |= {p.name, p.stem}
+    for n in edit_icloud:
+        names |= {n, Path(n).stem}
+    names |= {d.name for d in legacy_dirs}
     return names
 
 
 def count_existing_refs(refs_dir: Path | None) -> int:
-    """Refs counting toward the 3-5 target: top-level images (evicted included) plus
-    one per edits/ subfolder (edit-pending images are passing refs too)."""
+    """Refs counting toward the 5-10 target: top-level images (evicted included) plus
+    images in edits/ (edit-pending images are passing refs too)."""
     images, icloud = list_ref_images(refs_dir)
-    count = len(images) + len(icloud)
-    if refs_dir is not None:
-        edits = refs_dir / "edits"
-        if edits.is_dir():
-            count += sum(1 for d in edits.iterdir() if d.is_dir())
-    return count
+    edit_files, edit_icloud, legacy_dirs = _edits_entries(refs_dir)
+    return len(images) + len(icloud) + len(edit_files) + len(edit_icloud) + len(legacy_dirs)
 
 
 def resolve_folder(temple_arg: str) -> Path:

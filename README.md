@@ -1,6 +1,6 @@
 # temple-ref-finder
 
-Finds reference photos for new temple line drawings. Sweeps `../Temples TO DO/` for temple folders that need references, pulls candidates from churchofjesuschristtemples.org (web search fallback), and Claude judges each one in-session against the quality bar. Passing images land in the folder's `refs/`, images that need cleanup get a Nano Banana Pro edit prompt in `refs/edits/{image}/`, and the folder moves to `../Temples READY/` for Evan's review. From READY, Evan moves folders to `../Temples/` and runs the temple-product-generator sweep.
+Finds reference photos for new temple line drawings. Sweeps `../Temples TO DO/` for temple folders that need references, pulls candidates from churchofjesuschristtemples.org (web search fallback), and Claude judges each one in-session against the quality bar. Clean passes land in the folder's `refs/`, images that need cleanup go flat into `refs/edits/` (no per-image prompts since 2026-08-25), and the folder moves to `../Temples READY/` for Evan's review. From READY, Evan moves folders to `../Temples/` and runs the temple-product-generator sweep.
 
 Read `docs/decisions.md` before changing behavior. Driven by the `temple-ref-finder` skill ("run the refs sweep").
 
@@ -33,15 +33,14 @@ All from the repo root with `./.venv.nosync/bin/python`.
 - Resolution (script-enforced at pull): long edge >= 1200 px and short edge >= 800 px. Prefer >= 1600 long. Starred-folder renders may drop to `--min-long 1000` when there is no choice.
 - Framing (Claude judgment): the whole temple in frame; any image with part of the building cut off by the frame edge fails.
 - Angle (Claude judgment): 3/4 view showing two wall planes in two-point perspective, spire visible top to bottom. Front elevations, telephoto flattening, and drone top-downs fail.
-- Obstruction (Claude judgment): minor occluders pass clean; moderate occlusion or weak background contrast passes with an NB Pro edit prompt; heavy occlusion fails unless secondary detail refs can cover the hidden parts and nothing better exists.
+- Obstruction (Claude judgment): minor occluders pass clean; moderate occlusion or weak background contrast passes into `edits/`; heavy occlusion fails unless other selected images clearly show the hidden parts and nothing better exists.
 
 ## Layout of a processed folder
 
 ```
 {Temple}/refs/
   {site filename}.jpg              clean refs
-  edits/{image stem}/              one per image needing NB Pro work
-    {image}.jpg + nb-prompt.txt + detail-*.jpg
+  edits/                           images needing cleanup, flat (findings in the report)
   report (auto).md                 verdicts, credits, shortfall notes
 ```
 
@@ -50,7 +49,7 @@ All from the repo root with `./.venv.nosync/bin/python`.
 ```json
 {
   "clean": ["cedar-city-utah-temple-12345.jpg"],
-  "edits": [{"image": "...jpg", "prompt_file": "nb-prompt-12345.txt", "details": ["...jpg"]}],
+  "edits": ["cedar-city-utah-temple-67890.jpg"],
   "verdicts": [{"file": "...", "verdict": "PASS", "reason": "...", "url": "...", "credit": "..."}],
   "shortfall_note": null,
   "note": null,

@@ -1,4 +1,128 @@
 {
+  "Albuquerque": {
+    "official_name": "Albuquerque New Mexico Temple",
+    "slug": "albuquerque-new-mexico-temple"
+  },
+  "Anchorage": {
+    "official_name": "Anchorage Alaska Temple",
+    "slug": "anchorage-alaska-temple"
+  },
+  "Atlanta": {
+    "official_name": "Atlanta Georgia Temple",
+    "slug": "atlanta-georgia-temple"
+  },
+  "Austin": {
+    "official_name": "Austin Texas Temple",
+    "slug": "austin-texas-temple"
+  },
+  "Bakersfield": {
+    "official_name": "Bakersfield California Temple",
+    "slug": "bakersfield-california-temple"
+  },
+  "Baton Rouge": {
+    "official_name": "Baton Rouge Louisiana Temple",
+    "slug": "baton-rouge-louisiana-temple"
+  },
+  "Bentonville": {
+    "official_name": "Bentonville Arkansas Temple",
+    "slug": "bentonville-arkansas-temple"
+  },
+  "Birmingham": {
+    "official_name": "Birmingham Alabama Temple",
+    "slug": "birmingham-alabama-temple"
+  },
+  "Bismarck": {
+    "official_name": "Bismarck North Dakota Temple",
+    "slug": "bismarck-north-dakota-temple"
+  },
+  "Boise": {
+    "official_name": "Boise Idaho Temple",
+    "slug": "boise-idaho-temple"
+  },
+  "Burley": {
+    "official_name": "Burley Idaho Temple",
+    "slug": "burley-idaho-temple"
+  },
+  "Caldwell": {
+    "official_name": "Caldwell Idaho Temple",
+    "slug": "caldwell-idaho-temple"
+  },
+  "Casper": {
+    "official_name": "Casper Wyoming Temple",
+    "slug": "casper-wyoming-temple"
+  },
+  "Charlotte": {
+    "official_name": "Charlotte North Carolina Temple",
+    "slug": "charlotte-north-carolina-temple"
+  },
+  "Chicago": {
+    "official_name": "Chicago Illinois Temple",
+    "slug": "chicago-illinois-temple"
+  },
+  "Cincinnati": {
+    "official_name": "Cincinnati Ohio Temple",
+    "slug": "cincinnati-ohio-temple"
+  },
+  "Cleveland": {
+    "official_name": "Cleveland Ohio Temple",
+    "slug": "cleveland-ohio-temple"
+  },
+  "Coeur d'Alene": {
+    "official_name": "Coeur d'Alene Idaho Temple",
+    "slug": "coeur-d'alene-idaho-temple"
+  },
+  "Colorado Springs": {
+    "official_name": "Colorado Springs Colorado Temple",
+    "slug": "colorado-springs-colorado-temple"
+  },
+  "Columbia": {
+    "official_name": "Columbia South Carolina Temple",
+    "slug": "columbia-south-carolina-temple"
+  },
+  "Columbia River": {
+    "official_name": "Columbia River Washington Temple",
+    "slug": "columbia-river-washington-temple"
+  },
+  "Columbus": {
+    "official_name": "Columbus Ohio Temple",
+    "slug": "columbus-ohio-temple"
+  },
+  "Dallas": {
+    "official_name": "Dallas Texas Temple",
+    "slug": "dallas-texas-temple"
+  },
+  "Denver": {
+    "official_name": "Denver Colorado Temple",
+    "slug": "denver-colorado-temple"
+  },
+  "Des Moines": {
+    "official_name": "Des Moines Iowa Temple",
+    "slug": "des-moines-iowa-temple"
+  },
+  "Detroit": {
+    "official_name": "Detroit Michigan Temple",
+    "slug": "detroit-michigan-temple"
+  },
+  "El Paso": {
+    "official_name": "El Paso Texas Temple",
+    "slug": "el-paso-texas-temple"
+  },
+  "Elko": {
+    "official_name": "Elko Nevada Temple",
+    "slug": "elko-nevada-temple"
+  },
+  "Fairbanks": {
+    "official_name": "Fairbanks Alaska Temple",
+    "slug": "fairbanks-alaska-temple"
+  },
+  "Fairview": {
+    "official_name": "Fairview Texas Temple",
+    "slug": "fairview-texas-temple"
+  },
+  "Farmington": {
+    "official_name": "Farmington New Mexico Temple",
+    "slug": "farmington-new-mexico-temple"
+  },
   "Billings": {
     "official_name": "Billings Montana Temple",
     "slug": "billings-montana-temple"
@@ -90,5 +214,265 @@
   "West Jordan": {
     "official_name": "West Jordan Utah Temple",
     "slug": "west-jordan-utah-temple"
+  },
+  "Boston": {
+    "official_name": "Boston Massachusetts Temple",
+    "slug": "boston-massachusetts-temple"
+  },
+  "Feather River": {
+    "official_name": "Feather River California Temple",
+    "slug": "feather-river-california-temple"
+  },
+  "Flagstaff": {
+    "official_name": "Flagstaff Arizona Temple",
+    "slug": "flagstaff-arizona-temple"
+  },
+  "Fort Bend": {
+    "official_name": "Fort Bend Texas Temple",
+    "slug": "fort-bend-texas-temple"
+  },
+  "Fort Collins": {
+    "official_name": "Fort Collins Colorado Temple",
+    "slug": "fort-collins-colorado-temple"
+  },
+  "Fort Lauderdale": {
+    "official_name": "Fort Lauderdale Florida Temple",
+    "slug": "fort-lauderdale-florida-temple"
+  },
+  "Fort Worth": {
+    "official_name": "Fort Worth Texas Temple",
+    "slug": "fort-worth-texas-temple"
+  },
+  "Fresno": {
+    "official_name": "Fresno California Temple",
+    "slug": "fresno-california-temple"
+  },
+  "Gilbert": {
+    "official_name": "Gilbert Arizona Temple",
+    "slug": "gilbert-arizona-temple"
+  },
+  "Grand Junction": {
+    "official_name": "Grand Junction Colorado Temple",
+    "slug": "grand-junction-colorado-temple"
+  },
+  "Grand Rapids": {
+    "official_name": "Grand Rapids Michigan Temple",
+    "slug": "grand-rapids-michigan-temple"
+  },
+  "Greenville": {
+    "official_name": "Greenville South Carolina Temple",
+    "slug": "greenville-south-carolina-temple"
+  },
+  "Harrisburg": {
+    "official_name": "Harrisburg Pennsylvania Temple",
+    "slug": "harrisburg-pennsylvania-temple"
+  },
+  "Hartford": {
+    "official_name": "Hartford Connecticut Temple",
+    "slug": "hartford-connecticut-temple"
+  },
+  "Helena": {
+    "official_name": "Helena Montana Temple",
+    "slug": "helena-montana-temple"
+  },
+  "Honolulu": {
+    "official_name": "Honolulu Hawaii Temple",
+    "slug": "honolulu-hawaii-temple"
+  },
+  "Houston": {
+    "official_name": "Houston Texas Temple",
+    "slug": "houston-texas-temple"
+  },
+  "Huntsville": {
+    "official_name": "Huntsville Alabama Temple",
+    "slug": "huntsville-alabama-temple"
+  },
+  "Idaho Falls": {
+    "official_name": "Idaho Falls Idaho Temple",
+    "slug": "idaho-falls-idaho-temple"
+  },
+  "Indianapolis": {
+    "official_name": "Indianapolis Indiana Temple",
+    "slug": "indianapolis-indiana-temple"
+  },
+  "Jacksonville": {
+    "official_name": "Jacksonville Florida Temple",
+    "slug": "jacksonville-florida-temple"
+  },
+  "Kahului": {
+    "official_name": "Kahului Hawaii Temple",
+    "slug": "kahului-hawaii-temple"
+  },
+  "Kansas City": {
+    "official_name": "Kansas City Missouri Temple",
+    "slug": "kansas-city-missouri-temple"
+  },
+  "Knoxville": {
+    "official_name": "Knoxville Tennessee Temple",
+    "slug": "knoxville-tennessee-temple"
+  },
+  "Kona": {
+    "official_name": "Kona Hawaii Temple",
+    "slug": "kona-hawaii-temple"
+  },
+  "Laie": {
+    "official_name": "Laie Hawaii Temple",
+    "slug": "laie-hawaii-temple"
+  },
+  "Las Vegas": {
+    "official_name": "Las Vegas Nevada Temple",
+    "slug": "las-vegas-nevada-temple"
+  },
+  "Lone Mountain": {
+    "official_name": "Lone Mountain Nevada Temple",
+    "slug": "lone-mountain-nevada-temple"
+  },
+  "Los Angeles": {
+    "official_name": "Los Angeles California Temple",
+    "slug": "los-angeles-california-temple"
+  },
+  "Louisville": {
+    "official_name": "Louisville Kentucky Temple",
+    "slug": "louisville-kentucky-temple"
+  },
+  "Lubbock": {
+    "official_name": "Lubbock Texas Temple",
+    "slug": "lubbock-texas-temple"
+  },
+  "Marysville": {
+    "official_name": "Marysville Washington Temple",
+    "slug": "marysville-washington-temple"
+  },
+  "McAllen": {
+    "official_name": "McAllen Texas Temple",
+    "slug": "mcallen-texas-temple"
+  },
+  "Medford": {
+    "official_name": "Medford Oregon Temple",
+    "slug": "medford-oregon-temple"
+  },
+  "Memphis": {
+    "official_name": "Memphis Tennessee Temple",
+    "slug": "memphis-tennessee-temple"
+  },
+  "Meridian": {
+    "official_name": "Meridian Idaho Temple",
+    "slug": "meridian-idaho-temple"
+  },
+  "Mesa": {
+    "official_name": "Mesa Arizona Temple",
+    "slug": "mesa-arizona-temple"
+  },
+  "Milwaukee": {
+    "official_name": "Milwaukee Wisconsin Temple",
+    "slug": "milwaukee-wisconsin-temple"
+  },
+  "Missoula": {
+    "official_name": "Missoula Montana Temple",
+    "slug": "missoula-montana-temple"
+  },
+  "Modesto": {
+    "official_name": "Modesto California Temple",
+    "slug": "modesto-california-temple"
+  },
+  "Montpelier": {
+    "official_name": "Montpelier Idaho Temple",
+    "slug": "montpelier-idaho-temple"
+  },
+  "Moses Lake": {
+    "official_name": "Moses Lake Washington Temple",
+    "slug": "moses-lake-washington-temple"
+  },
+  "Nashville": {
+    "official_name": "Nashville Tennessee Temple",
+    "slug": "nashville-tennessee-temple"
+  },
+  "Newport Beach": {
+    "official_name": "Newport Beach California Temple",
+    "slug": "newport-beach-california-temple"
+  },
+  "Norfolk": {
+    "official_name": "Norfolk Virginia Temple",
+    "slug": "norfolk-virginia-temple"
+  },
+  "Oklahoma City": {
+    "official_name": "Oklahoma City Oklahoma Temple",
+    "slug": "oklahoma-city-oklahoma-temple"
+  },
+  "Orlando": {
+    "official_name": "Orlando Florida Temple",
+    "slug": "orlando-florida-temple"
+  },
+  "Palmyra": {
+    "official_name": "Palmyra New York Temple",
+    "slug": "palmyra-new-york-temple"
+  },
+  "Philadelphia": {
+    "official_name": "Philadelphia Pennsylvania Temple",
+    "slug": "philadelphia-pennsylvania-temple"
+  },
+  "Phoenix": {
+    "official_name": "Phoenix Arizona Temple",
+    "slug": "phoenix-arizona-temple"
+  },
+  "Pittsburgh": {
+    "official_name": "Pittsburgh Pennsylvania Temple",
+    "slug": "pittsburgh-pennsylvania-temple"
+  },
+  "Pocatello": {
+    "official_name": "Pocatello Idaho Temple",
+    "slug": "pocatello-idaho-temple"
+  },
+  "Portland Maine": {
+    "official_name": "Portland Maine Temple",
+    "slug": "portland-maine-temple"
+  },
+  "Portland Oregon": {
+    "official_name": "Portland Oregon Temple",
+    "slug": "portland-oregon-temple"
+  },
+  "Queen Creek": {
+    "official_name": "Queen Creek Arizona Temple",
+    "slug": "queen-creek-arizona-temple"
+  },
+  "RIchmond": {
+    "official_name": "Richmond Virginia Temple",
+    "slug": "richmond-virginia-temple"
+  },
+  "Raleigh": {
+    "official_name": "Raleigh North Carolina Temple",
+    "slug": "raleigh-north-carolina-temple"
+  },
+  "Rapid City": {
+    "official_name": "Rapid City South Dakota Temple",
+    "slug": "rapid-city-south-dakota-temple"
+  },
+  "Redlands": {
+    "official_name": "Redlands California Temple",
+    "slug": "redlands-california-temple"
+  },
+  "Reno": {
+    "official_name": "Reno Nevada Temple",
+    "slug": "reno-nevada-temple"
+  },
+  "Rexburg": {
+    "official_name": "Rexburg Idaho Temple",
+    "slug": "rexburg-idaho-temple"
+  },
+  "Roanoke": {
+    "official_name": "Roanoke Virginia Temple",
+    "slug": "roanoke-virginia-temple"
+  },
+  "Sacramento": {
+    "official_name": "Sacramento California Temple",
+    "slug": "sacramento-california-temple"
+  },
+  "Seattle": {
+    "official_name": "Seattle Washington Temple",
+    "slug": "seattle-washington-temple"
+  },
+  "Snowflake": {
+    "official_name": "Snowflake Arizona Temple",
+    "slug": "snowflake-arizona-temple"
   }
 }

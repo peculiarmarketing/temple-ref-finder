@@ -84,35 +84,24 @@ def validate(folder: Path, staging: Path, sel: dict) -> tuple[Path, list, list]:
         if p:
             clean_paths.append(p)
 
-    edit_jobs = []
-    for edit in sel["edits"]:
-        image_name = edit.get("image")
-        prompt_name = edit.get("prompt_file")
-        if not image_name or not prompt_name:
+    edit_paths = []
+    for name in sel["edits"]:
+        if not isinstance(name, str):
             problems.append(
-                f"an edits entry is missing 'image' or 'prompt_file': {edit}"
+                f"edits entries are plain image filenames since 2026-08-25: {name!r}"
             )
             continue
-        image = staged_image(image_name)
-        prompt = staging / prompt_name
-        if not prompt.is_file():
-            problems.append(f"prompt file {prompt_name} is not in {staging}")
-            prompt = None
-        details = []
-        for d in edit.get("details", []):
-            dp = staged_image(d)
-            if dp:
-                details.append(dp)
-        if image and prompt:
-            edit_jobs.append({"image": image, "prompt": prompt, "details": details})
+        p = staged_image(name)
+        if p:
+            edit_paths.append(p)
 
-    # No duplicates within the selection itself: repeated clean names, repeated
-    # edit stems, or a file listed as both clean and edit.
+    # No duplicates within the selection itself: repeated names, or a file
+    # listed as both clean and edit.
     clean_names = [p.name for p in clean_paths]
-    edit_stems = [job["image"].stem for job in edit_jobs]
+    edit_names = [p.name for p in edit_paths]
     dupes = {n for n in clean_names if clean_names.count(n) > 1}
-    dupes |= {s for s in edit_stems if edit_stems.count(s) > 1}
-    dupes |= {p.stem for p in clean_paths if p.stem in edit_stems}
+    dupes |= {n for n in edit_names if edit_names.count(n) > 1}
+    dupes |= set(clean_names) & set(edit_names)
     if dupes:
         problems.append(
             "selection lists the same image more than once: " + ", ".join(sorted(dupes))
@@ -124,7 +113,7 @@ def validate(folder: Path, staging: Path, sel: dict) -> tuple[Path, list, list]:
 
     refs_dir = find_refs_dir(folder) or (folder / "refs")
     existing_dir = refs_dir if refs_dir.is_dir() else None
-    total = count_existing_refs(existing_dir) + len(clean_paths) + len(edit_jobs)
+    total = count_existing_refs(existing_dir) + len(clean_paths) + len(edit_paths)
     # A mark set by the sweep means the temple is not built; the starred rules apply
     # even before the folder name carries the asterisks.
     starred = is_starred(folder.name) or sel["mark"] in ("*", "**")
@@ -152,10 +141,14 @@ def validate(folder: Path, staging: Path, sel: dict) -> tuple[Path, list, list]:
     for p in clean_paths:
         if p.name in taken or (refs_dir / p.name).exists():
             problems.append(f"refs/{p.name} already exists; never overwrite existing refs")
-    for job in edit_jobs:
-        stem = job["image"].stem
-        if stem in taken or (refs_dir / "edits" / stem).exists():
-            problems.append(f"edits/{stem}/ already exists in refs")
+    for p in edit_paths:
+        if (
+            p.name in taken
+            or p.stem in taken
+            or (refs_dir / "edits" / p.name).exists()
+            or (refs_dir / "edits" / p.stem).exists()
+        ):
+            problems.append(f"edits/{p.name} already exists; never overwrite existing refs")
 
     dest_name = target_name(folder.name, sel["mark"])
     if (READY_DIR / dest_name).exists():
@@ -165,12 +158,12 @@ def validate(folder: Path, staging: Path, sel: dict) -> tuple[Path, list, list]:
 
     if problems:
         raise SystemExit("Selection is not placeable:\n  - " + "\n  - ".join(problems))
-    return refs_dir, clean_paths, edit_jobs
+    return refs_dir, clean_paths, edit_paths
 
 
 def write_report(
     refs_dir: Path, folder: Path, official: str, sel: dict,
-    clean_paths: list, edit_jobs: list, existing_count: int,
+    clean_paths: list, edit_paths: list, existing_count: int,
 ) -> Path:
     today = datetime.date.today().isoformat()
     lines = [
@@ -180,7 +173,7 @@ def write_report(
         "",
         f"- Folder: {folder.name}" + (" (starred: no top-up rule)" if is_starred(folder.name) else ""),
         f"- Existing images kept: {existing_count}",
-        f"- Added: {len(clean_paths)} clean, {len(edit_jobs)} needing Nano Banana Pro edits",
+        f"- Added: {len(clean_paths)} clean, {len(edit_paths)} needing cleanup (in edits/)",
     ]
     if sel["shortfall_note"]:
         lines.append(f"- Shortfall: {sel['shortfall_note']}")
@@ -197,15 +190,10 @@ def write_report(
             if v.get("credit"):
                 parts.append(f"Credit: {v['credit']}")
             lines.append(" ".join(parts))
-    if edit_jobs:
-        lines += ["", "## Edit folders", ""]
-        for job in edit_jobs:
-            detail_note = (
-                f", {len(job['details'])} detail ref(s)" if job["details"] else ""
-            )
-            lines.append(
-                f"- edits/{job['image'].stem}/: prompt at nb-prompt.txt{detail_note}"
-            )
+    if edit_paths:
+        lines += ["", "## Images in edits/ (cleanup needed; findings above)", ""]
+        for p in edit_paths:
+            lines.append(f"- edits/{p.name}")
     report = refs_dir / "report (auto).md"
     report.write_text("\n".join(lines) + "\n")
     return report
@@ -221,17 +209,13 @@ def main() -> None:
     entry = temple_entry(folder.name)
     staging = staging_for(entry["slug"])
     sel = load_selection(staging)
-    refs_dir, clean_paths, edit_jobs = validate(folder, staging, sel)
+    refs_dir, clean_paths, edit_paths = validate(folder, staging, sel)
     existing_count = count_existing_refs(refs_dir if refs_dir.is_dir() else None)
 
     dest_name = target_name(folder.name, sel["mark"])
     plan = [f"refs dir: {refs_dir} (exists: {refs_dir.is_dir()})"]
     plan += [f"copy {p.name} -> {refs_dir.name}/" for p in clean_paths]
-    for job in edit_jobs:
-        plan.append(
-            f"create {refs_dir.name}/edits/{job['image'].stem}/ "
-            f"(image + nb-prompt.txt + {len(job['details'])} detail ref(s))"
-        )
+    plan += [f"copy {p.name} -> {refs_dir.name}/edits/" for p in edit_paths]
     plan.append(f"write {refs_dir.name}/report (auto).md")
     if dest_name != folder.name:
         plan.append(
@@ -250,17 +234,14 @@ def main() -> None:
     refs_dir.mkdir(exist_ok=True)
     for p in clean_paths:
         shutil.copy2(p, refs_dir / p.name)
-    for job in edit_jobs:
-        edit_dir = refs_dir / "edits" / job["image"].stem
-        edit_dir.mkdir(parents=True)
-        shutil.copy2(job["image"], edit_dir / job["image"].name)
-        shutil.copy2(job["prompt"], edit_dir / "nb-prompt.txt")
-        for d in job["details"]:
-            shutil.copy2(d, edit_dir / f"detail-{d.name}")
+    if edit_paths:
+        (refs_dir / "edits").mkdir(parents=True, exist_ok=True)
+    for p in edit_paths:
+        shutil.copy2(p, refs_dir / "edits" / p.name)
 
     write_report(
         refs_dir, folder, entry["official_name"], sel,
-        clean_paths, edit_jobs, existing_count,
+        clean_paths, edit_paths, existing_count,
     )
 
     dest = READY_DIR / dest_name
@@ -269,8 +250,8 @@ def main() -> None:
     summary_bits = []
     if clean_paths:
         summary_bits.append(f"{len(clean_paths)} clean")
-    if edit_jobs:
-        summary_bits.append(f"{len(edit_jobs)} with NB prompts")
+    if edit_paths:
+        summary_bits.append(f"{len(edit_paths)} needing cleanup")
     if existing_count:
         summary_bits.append(f"{existing_count} kept")
     if sel["shortfall_note"]:
